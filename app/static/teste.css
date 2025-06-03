@@ -1,0 +1,211 @@
+body{
+  background-image: url("./fx/grid-light.png");
+  background-repeat: repeat;
+  background-color: #f1f1f1;
+  max-width: 100%;
+}
+
+body,ul, li, p{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: Arial, serif;
+}
+
+h2{
+  text-decoration: none;
+  color: #000000;
+}
+
+a{
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000000;
+}
+
+.header{
+  background-color: #ffffff;
+  height: 100%;
+  width: 50%;
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba(135, 135, 135, 0.75);
+
+  margin: 3% 25%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 40px;
+}
+
+.header > a > img{
+  height: 55px;
+}
+
+.menu{
+  display: flex;
+}
+
+.menu > li{
+  margin-left: 20px;
+}
+
+/* Tag para criar animação de cada um dos links da NavBar */
+.animation > a{}
+
+.text:hover > a{
+  transition: 0.2s ease;
+  color: white;
+  background: black;
+  transform: translateY(3px);
+  border-radius: 5px;
+}
+
+.menu li a{
+  display: block;
+  padding: 10px;
+}
+
+/* Versão Tela pequena */
+@media (max-width: 960px) {
+.header{
+  background: white;
+  border-radius: 0;
+  width: 87%;
+
+  margin: 3% 1%;
+}
+
+/* Versão Mobile 430x932 Iphone 14 pro max */
+@media (max-width:660px){
+.header{
+  background: white;
+  height: 50px;
+  border-radius: 5px;
+  width: 83%;
+}
+.header > a > img{
+  margin-top: -50px;
+  height: 2.5rem;
+}
+.menu > li{
+  margin: 0;
+}
+.menu li a{
+  padding: 5px;
+}
+.text>a{
+  font-size: 1.1rem;}
+}
+
+}
+
+/* RodaPé */
+.align{
+  margin: 0 auto;
+  text-align: center;
+  padding: 30px;
+}
+
+footer{
+  display: flex;
+  background-color: #ffffff;
+  height: 100%;
+  box-shadow: 0 0 5px rgba(135, 135, 135, 0.75);
+
+  flex-wrap: wrap;
+
+  margin-top: 50px;
+}
+
+footer > div1 > img{
+  height: 50px;
+}
+
+footer > div1 > p{
+  font-size: 1rem;
+  font-weight: 600;
+  padding-top: 20px;
+}
+
+/* Galeria01 */
+.box1{
+  background: #ffffff;
+  box-shadow: 0 0 5px rgba(135, 135, 135, 0.75);
+  border-radius: 15px;
+
+  margin: 0 auto;
+  max-width: 95%;
+}
+
+.box1 > h2{
+  color: #272727;
+  font-size: 2.5rem;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.gallery {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image {
+  padding: 15px;
+}
+
+.image > img {
+  filter: grayscale(50%);
+  height: 300px;
+  border-radius: 10px;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.image > img:hover{
+  transform: scale(1.2);
+}
+
+.gallery:has(img:hover) :not(:hover) {
+  filter: grayscale(0);
+  filter: blur(4px);
+}
+
+/* Botão */
+.Botao > h1{
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.Botao > a > p{
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px;
+
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.Botao > a > p:hover{
+  letter-spacing: 20px;
+  color: white;
+  background: #1e1f22;
+  width: 19%;
+}
+
+.buttom{
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(28, 28, 28, 0.75);
+  width: 10%;
+  height: 20%;
+
+  padding: 10px;
+}

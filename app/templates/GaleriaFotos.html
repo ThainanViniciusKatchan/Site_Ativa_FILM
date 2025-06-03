@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {# Script do Modal #}
+    <script>
+ const imgPaths = {{ nextImg | tojson }};
+let currentImgIndex = 0;
+
+function openModal(imgSrc) {
+    document.getElementById("myModal").style.display = "block";
+    document.getElementById("img01").src = imgSrc;
+    // Habilita os botões inicialmente
+    document.querySelector(".back").disabled = false;
+    document.querySelector(".next").disabled = false;
+}
+
+function nextimg() {
+    currentImgIndex = (currentImgIndex + 1) % imgPaths.length;
+    const nextImgSrc = "static/images/Fotos/" + imgPaths[currentImgIndex];
+    document.getElementById("img01").src = nextImgSrc;
+    // Desabilita o botão "Avançar" se chegou na última imagem
+    if (currentImgIndex === imgPaths.length - 1) {
+        document.querySelector(".next").disabled = true;
+    }
+}
+
+function BackImg() {
+    currentImgIndex = (currentImgIndex - 1 + imgPaths.length) % imgPaths.length; // Garante índice positivo
+    const nextImgSrc = "static/images/Fotos/" + imgPaths[currentImgIndex];
+    document.getElementById("img01").src = nextImgSrc;
+    // Desabilita o botão "Voltar" se chegou na primeira imagem
+    if (currentImgIndex === 0) {
+        document.querySelector(".back").disabled = true;
+    }
+}
+
+function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+}
+
+    </script>
+    <link rel="stylesheet" href="./static/GaleriaFotos.css" >
+</head>
+<body>
+
+{# Nav Bar #}
+    <header class="header">
+        <a href="/">
+            <img src="{{ url_for('static', filename='./images/logo/ATIVA_FILMS.png') }}">
+        </a>
+        <nav>
+            <ul class="menu">
+                <li class="text"><a href="/">Inicio</a></li>
+                <li class="text"><a href="#clientes">Contato</a></li>
+                <li class="text"><a href="#orcamento">Orçamento</a></li>
+            </ul>
+        </nav>
+    </header>
+
+{# Galeria Fotos #}
+    <section class="box1">
+    <h2>Ensaios Fotograficos</h2>
+    <div class="gallery">
+        {% for filename in images %}
+            <div class="image">
+                <a href="#img01">
+                <img src="{{ url_for('static', filename='./images/Fotos/' + filename) }}"
+                     onclick="openModal('{{ url_for('static', filename='./images/Fotos/' + filename) }}')"
+                     >
+                </a>
+            </div>
+        {% endfor %}
+</section>
+
+{# Modal para exibição das fotos em tela cheia #}
+        <div id="myModal" class="modal">
+            <span class="back" onclick="BackImg()"><a href="#img01"><</a></span>
+            <span class="close" onclick="closeModal()"><a href="#img01">X</a></span>
+            <span class="next" onclick="nextimg()"><a href="#img01">></a></span>
+            <img class="modal-content" id="img01">
+        </div>
+{# Botão solicitar orçamento #}
+<div class="Botao" id="orcamento">
+    <h1>Peça seu orçamento</h1>
+    <a href="#">
+        <p class="buttom" >Solicitar</p>
+    </a>
+</div>
+
+{# RodaPé #}
+    <footer>
+        <div1 class="align">
+            <img src="{{url_for('static', filename='./images/logo/ATIVA_FILMS.png')}}">
+            <p> Todos os direitos reservados 2024-{{ano}}</p>
+        </div1>
+    </footer>
+</body>
+</html>

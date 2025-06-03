@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./static/GaleriaVideo.css">
+</head>
+<body>
+
+{# Nav Bar #}
+<header class="header">
+    <a href="/">
+        <img src="{{ url_for('static', filename='./images/logo/ATIVA_FILMS.png') }}">
+    </a>
+    <nav>
+        <ul class="menu">
+            <li class="text"><a href="/">Inicio</a></li>
+            <li class="text"><a href="#clientes">Contato</a></li>
+            <li class="text"><a href="#orcamento">Orçamento</a></li>
+        </ul>
+    </nav>
+</header>
+
+{# Galeria Eventos #}
+<section class="box1">
+    <h2>eventos/Aniversários/Casamentos</h2>
+    {# Vídeos de Eventos #}
+    <div class="gallery">
+        {% for filename in Eventos %}
+            <div class="video-container">
+                <video controls width="100%">
+                    <source src="{{ url_for('static', filename='static/images/Videos/Eventos/' + filename) }}" type="video/mp4">
+                    Seu navegador não suporta o elemento de vídeo.
+                </video>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{# Vídeos Curtos #}
+<section class="box2">
+    <h2>Reels/shorts/TikTok</h2>
+    <div class="gallery">
+        {% for filename in Reels %}
+        <div class="video-container1">
+            <video controls width="100%">
+                    <source src="{{ url_for('static', filename='./images/Videos/' + filename)}}" type="video/mp4">
+                    Seu navegador não suporta o elemento de vídeo.
+            </video>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{# Botão solicitar orçamento #}
+<div class="Botao" id="orcamento">
+    <h1>Peça seu orçamento</h1>
+    <a href="#">
+        <p class="buttom" >Solicitar</p>
+    </a>
+</div>
+
+{# RodaPé #}
+<footer>
+    <div1 class="align">
+        <img src="{{ url_for('static', filename='./images/logo/ATIVA_FILMS.png') }}">
+        <p> Todos os direitos reservados 2024-{{ ano }}</p>
+    </div1>
+</footer>
+</body>
+</html>
